@@ -2,7 +2,7 @@
 version: "v0.4"
 
 project:
-  name: "EscauriazaSereginSverak"
+  name: "Escauriaza–Seregin–Šverák and Ladyzhenskaya–Prodi–Serrin regularity"
   description: >-
     A Lean 4 / Mathlib formalization (in Lean's module system), built on the
     published Caffarelli-Kohn-Nirenberg formalization, of the
