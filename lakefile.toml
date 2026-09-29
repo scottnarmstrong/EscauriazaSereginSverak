@@ -1,0 +1,34 @@
+name = "EscauriazaSereginSverak"
+version = "1.0.0"
+defaultTargets = ["ESS"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.35.0-rc2"
+
+# The Caffarelli–Kohn–Nirenberg formalization: suitable weak solutions,
+# regular points, the singular set, its Theorems A–C, Leray existence, the
+# associated pressure, the forced versions and its Foundation library.
+# Pinned to an exact commit.
+[[require]]
+name = "CKN"
+git = "https://github.com/scottnarmstrong/CaffarelliKohnNirenberg.git"
+rev = "381d658ead0f03a18361965cc0427ce3fa5844ab"
+
+# Main library.  ESS.lean imports every module, including the main theorem
+# statements and their proofs.
+[[lean_lib]]
+name = "ESS"
+globs = ["ESS"]
+leanOptions = { autoImplicit = false, warningAsError = true }
+
+# Independent theorem statements and their proofs from the library.
+# The Challenge has one intentional sorry per selected theorem;
+# check_comparators.py verifies that these are its only warnings and checks
+# the Solution with warnings as errors.
+[[lean_lib]]
+name = "Comparators"
+globs = ["comparators.+"]
+leanOptions = { autoImplicit = false }

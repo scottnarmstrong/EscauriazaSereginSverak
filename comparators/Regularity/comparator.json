@@ -1,0 +1,19 @@
+{
+  "challenge_module": "comparators.Regularity.Challenge",
+  "solution_module": "comparators.Regularity.Solution",
+  "theorem_names": [
+    "ESSChallenge.essLocal",
+    "ESSChallenge.essGlobal",
+    "ESSChallenge.essL5Unique",
+    "ESSChallenge.ladyzhenskayaProdiSerrin",
+    "ESSChallenge.essSmooth",
+    "ESSChallenge.serrinCriterion"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

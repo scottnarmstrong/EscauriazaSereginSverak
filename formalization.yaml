@@ -1,0 +1,472 @@
+# Metadata schema version.
+version: "v0.4"
+
+project:
+  name: "EscauriazaSereginSverak"
+  description: >-
+    A Lean 4 / Mathlib formalization (in Lean's module system), built on the
+    published Caffarelli-Kohn-Nirenberg formalization, of the
+    Escauriaza-Seregin-Sverak theorem: Leray-Hopf solutions of the
+    three-dimensional incompressible Navier-Stokes equations on R^3 bounded in
+    L^infinity(0,T;L^3) have no singular points, lie in L^5, are unique and
+    are smooth on R^3 x (0,T] (Theorem 1.3 of that paper in full), and of the
+    Ladyzhenskaya-Prodi-Serrin theorem: Leray-Hopf solutions in
+    L^l(0,T;L^s) with 3/s + 2/l = 1 and 3 < s <= infinity are unique and
+    smooth on R^3 x (0,T]. Leray's global existence theorem in suitable form
+    (with and without forcing), the associated pressure and the Leray-Hopf
+    definitions are in the CKN formalization (moved there on 2026-09-29) and
+    are used here. The local L^3 regularity theorem and the Carleman,
+    unique-continuation and backward-uniqueness theorems it rests on are
+    proved in full. Every main theorem is proved using only the standard
+    axioms. The manuscript being formalized is in the repository and was
+    corrected alongside the development; its Parts II and III now live in the
+    CKN paper.
+  authors:
+    - "Scott Armstrong"
+  responsible_maintainers:
+    - "Scott Armstrong"
+  affiliations:
+    - "Scott Armstrong: CNRS and Laboratoire Jacques-Louis Lions, Sorbonne Université; Courant Institute School of Mathematics, Computing, and Data Science, New York University"
+  license: "Apache-2.0"
+  funding:
+    - "Scott Armstrong was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme, grant agreement No. 101200828."
+
+classification:
+  arxiv: ["math.AP"]
+  msc2020: ["35Q30", "76D05", "35B65", "35D30", "35B60"]
+
+sources:
+  - title: "The Escauriaza--Seregin--Šverák theorem: version for the Lean formalization"
+    id: "paper/ess.tex"
+    url: "paper/ess.pdf"
+    type: "paper"
+    relationship: "formalizes"
+    note: >-
+      The included manuscript is the mathematical source for every main
+      theorem of this library (the Leray existence and associated-pressure
+      parts, formerly Parts II and III, are now in the CKN paper); Part VI of it is the source of the Ladyzhenskaya-Prodi-Serrin
+      theorem and its corollary. The Lean development follows its proof route, with
+      representation choices and departures from the cited sources described
+      in docs/DEVIATIONS.md and docs/DESIGN_NOTES.md.
+    license: "Apache-2.0"
+    author_contacted: "n/a"     # the formalizer is the author of the source
+    prior_work: "Leray (1934); Caffarelli, Kohn and Nirenberg (1982); Escauriaza, Seregin and Sverak (2003); Ozanski and Pooley (2018)"
+  - title: "L_{3,infinity}-solutions of Navier-Stokes equations and backward uniqueness"
+    authors:
+      - "Luis Escauriaza"
+      - "Gregory A. Seregin"
+      - "Vladimír Šverák"
+    id: "doi:10.1070/RM2003v058n02ABEH000609"
+    type: "paper"
+    relationship: "independently-proves"
+    note: >-
+      Theorems 1.3 and 1.4 of this paper are the regularity, L^5, uniqueness
+      and smoothness theorems formalized here (Theorem 1.3 in full, including
+      smoothness on R^3 x (0,T]), and its Theorem 1.2 is the
+      Ladyzhenskaya-Prodi-Serrin theorem in the whole-space form formalized
+      here; its Theorems 4.1 and 5.1 and
+      Propositions 6.1 and 6.2 are the unique-continuation, backward-uniqueness
+      and Carleman theorems. The manuscript records where its route departs
+      from the paper's.
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+  - title: "Sur le mouvement d'un liquide visqueux emplissant l'espace"
+    authors:
+      - "Jean Leray"
+    id: "Acta Math. 63 (1934), 193-248"
+    type: "paper"
+    relationship: "independently-proves"
+    note: "The original global existence theorem; its suitable form is formalized in the CKN library (see related_formalizations) and used here."
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+  - title: "Leray's fundamental work on the Navier-Stokes equations: a modern review of \"Sur le mouvement d'un liquide visqueux emplissant l'espace\""
+    authors:
+      - "Wojciech S. Ożański"
+      - "Benjamin C. Pooley"
+    id: "arXiv:1708.09787"
+    type: "paper"
+    relationship: "background"
+    note: "Primary exposition for the existence construction, formalized in the CKN library, which replaces its Oseen-kernel construction by a Fourier L^2 construction."
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+
+  - title: "The Three-Dimensional Navier-Stokes Equations: Classical Theory"
+    authors:
+      - "James C. Robinson"
+      - "Jose L. Rodrigo"
+      - "Witold Sadowski"
+    id: "doi:10.1017/CBO9781139095143"
+    type: "book"
+    relationship: "formalizes"
+    note: >-
+      Theorems 8.17 and 8.19 (Cambridge University Press, 2016) are the
+      textbook route followed for the Ladyzhenskaya-Prodi-Serrin theorem
+      (thm:lps), for the whole range 3 < s <= infinity. The manuscript's
+      Part VI records where its route differs (no strong energy inequality is
+      assumed; see docs/DEVIATIONS.md). The same book is used for the
+      suitability arguments and the weak-strong comparison.
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+  - title: "Un teorema di unicita per le equazioni di Navier-Stokes"
+    authors:
+      - "Giovanni Prodi"
+    id: "Ann. Mat. Pura Appl. (4) 48 (1959), 173-182"
+    type: "paper"
+    relationship: "independently-proves"
+    note: "Original source of the uniqueness part of the Ladyzhenskaya-Prodi-Serrin theorem."
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+  - title: "The initial value problem for the Navier-Stokes equations"
+    authors:
+      - "James Serrin"
+    id: "Nonlinear Problems (R. E. Langer, ed.), Univ. of Wisconsin Press, Madison, 1963, 69-98"
+    type: "paper"
+    relationship: "independently-proves"
+    note: "Original source of the uniqueness part of the Ladyzhenskaya-Prodi-Serrin theorem; Serrin's interior regularity result (Arch. Rational Mech. Anal. 9 (1962), 187-195) is background."
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+  - title: "On uniqueness and smoothness of generalized solutions to the Navier-Stokes equations"
+    authors:
+      - "Olga A. Ladyzhenskaya"
+    id: "Zap. Nauchn. Sem. LOMI 5 (1967), 169-185"
+    type: "paper"
+    relationship: "independently-proves"
+    note: "Original source of the smoothness part of the Ladyzhenskaya-Prodi-Serrin theorem."
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+
+related_formalizations:
+  - id: "https://github.com/scottnarmstrong/CaffarelliKohnNirenberg"
+    relationship: "builds-on"
+    note: >-
+      The Caffarelli-Kohn-Nirenberg formalization (Armstrong, Vicol) is a Lake
+      dependency pinned to the exact commit 381d658ead0f03a18361965cc0427ce3fa5844ab (both libraries use
+      Lean's module system). Its suitable-weak-solution class, regular and
+      singular points, and Theorems A and C are used unchanged. Since
+      2026-09-29 it also contains the Leray background moved out of this
+      repository: the definitions CKN.IsInJ, CKN.IsLerayHopfSolution,
+      CKN.IsGlobalLerayHopfSolution, CKN.IsForcedLerayHopfSolution,
+      CKN.IsGlobalForcedLerayHopfSolution, CKN.IsLocallySquareIntegrableForce,
+      CKN.IsLocallyQIntegrableForce, CKN.forcedQuadraticTensor and
+      CKN.HasSpaceTimeWeakDerivs, and the theorems CKN.leray_existence,
+      CKN.leray_existence_singularSet, CKN.associatedPressure,
+      CKN.lerayExistenceForced, CKN.lerayExistenceForcedSingularSet and
+      CKN.associatedPressureForced. These six theorems are results of that
+      dependency and are not main results of this repository. CKN's Leray
+      comparator pair restates five of them; CKN.associatedPressureForced has
+      no comparator restatement.
+
+status:
+  scope: >-
+    Complete for the ten main theorems of this library as stated in the
+    manuscript (thm:ess-local,
+    thm:ess-global, thm:ess-l5-unique, thm:uc, thm:bu, prop:carleman-gauss,
+    prop:carleman-halfspace, thm:lps, cor:ess-smooth and cor:serrin-criterion);
+    the Leray existence theorems (thm:leray, cor:ckn-headline,
+    thm:assoc-pressure, thm:leray-forced, thm:leray-forced-singularSet,
+    thm:assoc-pressure-forced) are proved in the CKN dependency. Space is R^3;
+    the Leray-Hopf and suitable solution notions (both from CKN) use one
+    every-time velocity representative with an explicit weak gradient. The
+    regularity theorems are unforced, as in the source. Theorem 1.3 of Escauriaza-Seregin-Sverak is
+    proved in full, including smoothness on R^3 x (0,T] (one-sided at T),
+    through the Ladyzhenskaya-Prodi-Serrin theorem, which is proved for the
+    whole range 3 < s <= infinity. The linear theorems are stated in three
+    dimensions for fields with explicit space-time weak derivatives. The
+    supporting library (1,008 files, about 205,000 lines) contains the
+    local energy equality, the blow-up argument, the vorticity bootstrap, the
+    Carleman estimates, the L^5 and weak-strong uniqueness development, and the
+    Part VI development for the Ladyzhenskaya-Prodi-Serrin theorem (Serrin
+    mixed norms, the energy equality under the Serrin condition, the local
+    strong solution, continuation and smoothing). The
+    representation choices and departures from the sources are described in
+    docs/DESIGN_NOTES.md and docs/DEVIATIONS.md.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "ESS.essLocal"
+      file: "ESS/Statements/EssLocal.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.essGlobal"
+      file: "ESS/Statements/EssGlobal.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.essL5Unique"
+      file: "ESS/Statements/EssL5Unique.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.uniqueContinuation"
+      file: "ESS/Statements/UniqueContinuation.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Linear/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.backwardUniqueness"
+      file: "ESS/Statements/BackwardUniqueness.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Linear/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.carlemanGaussian"
+      file: "ESS/Statements/CarlemanGaussian.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Linear/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.carlemanHalfSpace"
+      file: "ESS/Statements/CarlemanHalfSpace.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Linear/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.ladyzhenskayaProdiSerrin"
+      file: "ESS/Statements/LadyzhenskayaProdiSerrin.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.essSmooth"
+      file: "ESS/Statements/EssSmooth.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESS.serrinCriterion"
+      file: "ESS/Statements/SerrinCriterion.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.essLocal"
+      file: "comparators/Regularity/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.essGlobal"
+      file: "comparators/Regularity/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.essL5Unique"
+      file: "comparators/Regularity/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.uniqueContinuation"
+      file: "comparators/Linear/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Linear/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.backwardUniqueness"
+      file: "comparators/Linear/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Linear/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.carlemanGaussian"
+      file: "comparators/Linear/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Linear/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.carlemanHalfSpace"
+      file: "comparators/Linear/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Linear/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.ladyzhenskayaProdiSerrin"
+      file: "comparators/Regularity/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.essSmooth"
+      file: "comparators/Regularity/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+    - declaration: "ESSChallenge.serrinCriterion"
+      file: "comparators/Regularity/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparators/Regularity/comparator.json"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+        - "gpt-6-luna"
+        - "gpt-6-sol"
+        - "claude-sonnet-5-5"
+      framework: >-
+        Claude Opus 5.5 coordinated the work under the author's supervision. Most
+        of the library was written with GPT-6 Luna (reasoning effort xhigh, up to
+        eight concurrent Codex instances) and GPT-6 Sol (reasoning effort high,
+        at most one instance). The Ladyzhenskaya-Prodi-Serrin part, the
+        Mathlib-only comparators, the transfer of the Leray background to CKN and
+        the port to Lean's module system were done with Claude Sonnet 5.5 (at most
+        four concurrent instances).
+      tool_setup: >-
+        Lean 4 and Mathlib v4.35.0-rc2, with the published CKN formalization as
+        a pinned Lake dependency. The main theorem statements were reviewed and
+        fixed before their proofs were developed. Verification uses source
+        checks, a build of every library module, comparator statements and
+        solutions, independent NanoDa replay, and axiom checks. The commands
+        are documented in docs/VERIFICATION.md and run by the repository's CI
+        workflows.
+      cost:
+        wall_time: "development between 2026-09-26 and 2026-09-29, including cleanup and release preparation"
+        compute: "about 8 concurrent model instances, i.e. on the order of 400 model-instance hours (estimate)"
+        spend_usd: "not separately metered (ChatGPT Pro and Claude Max subscriptions)"
+        hardware: "one 16-CPU / 124 GB RAM Linux machine"
+      prompting_notes: >-
+        The author determined the mathematical statements and reviewed changes
+        to the manuscript. Separate reviews compared the formal statements with
+        the manuscript and checked the use of intermediate results in the proofs.
+
+  spend_usd: "not separately metered (ChatGPT Pro and Claude Max subscriptions)"
+  notes: >-
+    All Lean code was written by the listed models under the supervision of the
+    author, who decided the mathematics, the statements and the corrections to
+    the manuscript. Every proof is checked by the Lean kernel; the library
+    contains no sorry and no custom axiom. The two comparator Challenges
+    (comparators/{Linear,Regularity}/Challenge.lean) import only
+    Mathlib, define every notion from Mathlib, and contain exactly ten
+    intentional theorem-body placeholders (4 + 6), one for each of the
+    ten main theorems. The separate Solution.lean files
+    prove the same named declarations from the library with transport lemmas;
+    each pair's comparator.json selects its declarations (ten in all). The
+    comparator pair for the Leray theorems is in the CKN repository.
+
+fidelity:
+  divergences: >-
+    Recorded in docs/DEVIATIONS.md and docs/DESIGN_NOTES.md. The main ones:
+    a Leray-Hopf solution (CKN.IsLerayHopfSolution) is one specified function
+    whose every time slice is constrained (weak continuity on the closed
+    interval, the energy inequality at every time, the strong initial trace),
+    and the same function is the suitable weak solution; a global solution is a Leray-Hopf solution on every
+    finite interval [0, T]; the local regularity theorem is stated on the
+    coherent cylinder B_1 x (-1, 0), correcting a sign mismatch in the printed
+    statement of ESS Theorem 1.4; the associated pressure (in CKN) is the
+    whole-space double Riesz transform with a fixed sign; the linear theorems are stated in
+    three dimensions for W^{2,1}_2 fields with explicit weak-derivative data and
+    continuity where a trace is evaluated; the endpoint argument replaces the all-orders Stokes estimates by a finite
+    vorticity bootstrap and closes the singular-point lower bound through an
+    open-top smallness criterion; the L^5 and uniqueness theorem uses a
+    manuscript proof of the short-time L^5 bound and a (5,5) weak-strong
+    comparison instead of the external mixed-norm estimate cited in ESS. The
+    Ladyzhenskaya-Prodi-Serrin theorem (Part VI of the manuscript) follows
+    Robinson-Rodrigo-Sadowski, Theorems 8.17 and 8.19, with these
+    differences: no strong energy inequality is assumed, and the energy
+    equality is proved almost everywhere in time from the Serrin condition;
+    the local strong solution comes from the Fourier L^2
+    machinery of the CKN library, comparison at restart times is by concatenation, and
+    smoothing is a direct regularity ladder on the strong solution; the
+    endpoint s = infinity and smoothness up to the final time T are proved
+    explicitly. Equality of solutions is almost everywhere.
+
+review:
+  status: "author-verified"
+  reviewers:
+    - "Scott Armstrong"
+  notes: >-
+    Lean checks each proof against its formal statement. The author reviewed
+    that the statements are the intended theorems; the statements were
+    compared with the manuscript by independent read-only reviews, including two independent pre-publication reviews with GPT-6 Sol, and
+    the comparator declarations are checked mechanically. This is not
+    external peer review.
+
+alignment:
+  namespace: "ESS"
+  statements:
+    - source: "Theorem thm:ess-local, local regularity (ESS Theorem 1.4)"
+      lean: "ESS.essLocal"
+      module: "ESS.Statements.EssLocal"
+      status: "proved"
+      note: "Comparator pair comparators/Regularity/{Challenge,Solution}.lean."
+    - source: "Theorem thm:ess-global, regularity of L^infinity L^3 Leray-Hopf solutions (ESS Theorem 1.3)"
+      lean: "ESS.essGlobal"
+      module: "ESS.Statements.EssGlobal"
+      status: "proved"
+      note: "Comparator pair comparators/Regularity/{Challenge,Solution}.lean. Conclusion: the CKN singular set on R^3 x (0, T) is empty."
+    - source: "Theorem thm:ess-l5-unique, L^5 bound and uniqueness (ESS Theorem 1.3)"
+      lean: "ESS.essL5Unique"
+      module: "ESS.Statements.EssL5Unique"
+      status: "proved"
+      note: "Comparator pair comparators/Regularity/{Challenge,Solution}.lean."
+    - source: "Theorem thm:uc, unique continuation across a spatial boundary (ESS Theorem 4.1)"
+      lean: "ESS.uniqueContinuation"
+      module: "ESS.Statements.UniqueContinuation"
+      status: "proved"
+      note: "Comparator pair comparators/Linear/{Challenge,Solution}.lean."
+    - source: "Theorem thm:bu, backward uniqueness on a half-space (ESS Theorem 5.1)"
+      lean: "ESS.backwardUniqueness"
+      module: "ESS.Statements.BackwardUniqueness"
+      status: "proved"
+      note: "Comparator pair comparators/Linear/{Challenge,Solution}.lean, for every real growth rate M as in the manuscript; the library statement assumes 0 < M, which loses nothing (the Solution applies it with max M 1)."
+    - source: "Proposition prop:carleman-gauss, Carleman inequality with a Gaussian weight (ESS Proposition 6.1)"
+      lean: "ESS.carlemanGaussian"
+      module: "ESS.Statements.CarlemanGaussian"
+      status: "proved"
+      note: "Comparator pair comparators/Linear/{Challenge,Solution}.lean. The constant is stated existentially, as in ESS; the proof supplies the explicit value of the manuscript."
+    - source: "Proposition prop:carleman-halfspace, Carleman inequality on a half-space (ESS Proposition 6.2)"
+      lean: "ESS.carlemanHalfSpace"
+      module: "ESS.Statements.CarlemanHalfSpace"
+      status: "proved"
+      note: "Comparator pair comparators/Linear/{Challenge,Solution}.lean. The constants are stated existentially, as in ESS; the proof supplies the explicit values of the manuscript."
+    - source: "Theorem thm:lps, Ladyzhenskaya-Prodi-Serrin uniqueness and smoothness (ESS Theorem 1.2; Robinson-Rodrigo-Sadowski Theorems 8.17 and 8.19)"
+      lean: "ESS.ladyzhenskayaProdiSerrin"
+      module: "ESS.Statements.LadyzhenskayaProdiSerrin"
+      status: "proved"
+      note: "Comparator pair comparators/Regularity/{Challenge,Solution}.lean. Serrin condition for 3 < s < infinity with l = 2s/(s-3), or L^2 L^infinity; conclusion: uniqueness among Leray-Hopf solutions with the datum (almost everywhere) and an almost-everywhere equal representative that is C^infinity on R^3 x (0, T], one-sided at T."
+    - source: "Corollary cor:ess-smooth, smoothness of L^infinity L^3 Leray-Hopf solutions (ESS Theorem 1.3 in full)"
+      lean: "ESS.essSmooth"
+      module: "ESS.Statements.EssSmooth"
+      status: "proved"
+      note: "Comparator pair comparators/Regularity/{Challenge,Solution}.lean. L^5, uniqueness and a C^infinity representative on R^3 x (0, T], from thm:ess-l5-unique and thm:lps."
+    - source: "Corollary cor:serrin-criterion, the regularity criterion for 3 <= s <= infinity"
+      lean: "ESS.serrinCriterion"
+      module: "ESS.Statements.SerrinCriterion"
+      status: "proved"
+      note: "Comparator pair comparators/Regularity/{Challenge,Solution}.lean. Leray-Hopf solution on [0, T] in L^infinity L^3, or in L^l L^s with 3 < s < infinity and l = 2s/(s-3), or in L^2 L^infinity: unique among Leray-Hopf solutions with the datum (almost everywhere) and almost everywhere equal to a function that is C^infinity on R^3 x (0, T], one-sided at T."
+    - source: "Leray existence, associated pressure, Leray-Hopf definitions (thm:leray, cor:ckn-headline, thm:assoc-pressure, thm:leray-forced, thm:leray-forced-singularSet, thm:assoc-pressure-forced, def:leray-hopf, rem:global-LH, def:forced-leray-hopf, space-time weak derivatives)"
+      lean: "CKN.leray_existence"
+      module: "CKN.Statements.LerayExistence"
+      status: "proved"
+      note: "Provided by the CKN dependency, not restated here; the other declarations are CKN.leray_existence_singularSet, CKN.associatedPressure, CKN.lerayExistenceForced, CKN.lerayExistenceForcedSingularSet, CKN.associatedPressureForced and the definitions CKN.IsInJ, CKN.IsLerayHopfSolution, CKN.IsGlobalLerayHopfSolution, CKN.IsForcedLerayHopfSolution, CKN.IsGlobalForcedLerayHopfSolution, CKN.HasSpaceTimeWeakDerivs."
+    - source: "Part VI, the class of local strong solutions used in the Ladyzhenskaya-Prodi-Serrin proof"
+      lean: "ESS.isLpsStrongSolution_zero"
+      module: "ESS.LPS.StrongSolutionZero"
+      status: "proved"
+      note: "Witness that ESS.IsLpsStrongSolution is inhabited; see docs/WITNESSES.md."
+
+acknowledgements: >-
+  Scott Armstrong was supported by the European Research Council (ERC) under the
+  European Union's Horizon Europe research and innovation programme (grant
+  agreement No. 101200828). Built on Lean 4, Mathlib, Lake and the
+  Caffarelli-Kohn-Nirenberg formalization.

@@ -1,0 +1,40 @@
+% Copyright (c) 2026 Scott Armstrong.
+% Released under Apache 2.0 license.
+% Shared notation for paper/ess.tex. Add a macro here only when it is used
+% at least three times; never redefine a macro with a different meaning.
+
+% Number systems
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Norms and absolute values (Euclidean on vectors and matrices)
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\nf}[2]{#1/#2}
+
+% Differential operators
+\DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand{\dt}{\partial_t}
+\newcommand{\Lop}{L}                       % backward heat operator dt + Delta (Sections on Carleman, UC, BU)
+
+% Sets
+\newcommand{\Ball}[2]{B_{#1}(#2)}          % \Ball{r}{x}: open Euclidean ball of radius r centred at x
+\newcommand{\Hplus}{\R^3_+}                % {x_3 > 0}
+\newcommand{\Qp}{Q_+}                      % \Hplus \times (0,1)
+\newcommand{\Cyl}[2]{Q(#1,#2)}             % \Cyl{R}{T} = B_R(0) \times (0,T)
+\newcommand{\Pcyl}[2]{Q_{#1}(#2)}          % \Pcyl{r}{z}: past parabolic cylinder B_r(x) \times (t-r^2, t] of CKN
+
+% Function classes
+\newcommand{\Cc}{C_c^\infty}
+\newcommand{\Ctwoone}{C^{2,1}}
+\newcommand{\Lloc}[1]{L^{#1}_{\mathrm{loc}}}
+
+% Navier--Stokes objects
+\newcommand{\Leray}{\mathbb{P}}           % Leray projection
+\newcommand{\Riesz}[1]{\mathcal{R}_{#1}}   % Riesz transform R_j
+\newcommand{\J}{J}                         % the space J of ESS (divergence-free L^2 fields)
+\newcommand{\Jeps}{J_\varepsilon}          % spatial mollification at scale epsilon

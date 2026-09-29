@@ -1,0 +1,72 @@
+cff-version: 1.2.0
+message: >-
+  If you use this formalization, please cite it as below. Scott Armstrong was
+  supported by the European Research Council (ERC) under the European Union's
+  Horizon Europe research and innovation programme, grant agreement No. 101200828.
+title: "EscauriazaSereginSverak: a Lean 4 formalization of the Escauriaza-Seregin-Sverak theorem for the Navier-Stokes equations"
+version: "1.0"
+date-released: 2026-09-29
+abstract: >-
+  A machine-checked Lean 4 / Mathlib formalization, built on the published
+  Caffarelli-Kohn-Nirenberg formalization (which contains Leray's global
+  existence theorem in suitable form, its singular-set corollary, the
+  associated pressure and the forced versions, all used here), of the
+  Escauriaza-Seregin-Sverak theorem on the three-dimensional incompressible
+  Navier-Stokes equations on R^3: a Leray-Hopf
+  solution bounded in L^infinity(0,T;L^3) has no singular points, lies in
+  L^5, is unique among Leray-Hopf solutions with the same datum and is smooth
+  on R^3 x (0,T], so that Theorem 1.3 of that paper is proved in full;
+  this rests on the Ladyzhenskaya-Prodi-Serrin theorem, also formalized: a
+  Leray-Hopf solution in L^l(0,T;L^s) with 3/s + 2/l = 1 and
+  3 < s <= infinity is unique and smooth on R^3 x (0,T]; the combined
+  regularity criterion for 3 <= s <= infinity is stated as a single theorem. Also included are the local L^3 regularity theorem and the unique-continuation,
+  backward-uniqueness and Carleman theorems it rests on. Each of the ten
+  theorems is proved using only the standard axioms and is restated in a
+  Mathlib-only comparator challenge that is checked separately.
+type: software
+authors:
+  - family-names: Armstrong
+    given-names: Scott
+    affiliation: "CNRS and Laboratoire Jacques-Louis Lions, Sorbonne Université; Courant Institute School of Mathematics, Computing, and Data Science, New York University"
+keywords:
+  - Lean
+  - mathlib
+  - formal verification
+  - Navier-Stokes equations
+  - Leray-Hopf solutions
+  - suitable weak solutions
+  - backward uniqueness
+  - Escauriaza-Seregin-Sverak
+  - Ladyzhenskaya-Prodi-Serrin
+license: Apache-2.0
+repository-code: "https://github.com/scottnarmstrong/EscauriazaSereginSverak"
+references:
+  - type: unpublished
+    title: "The Escauriaza-Seregin-Sverak theorem"
+    authors:
+      - family-names: Armstrong
+        given-names: Scott
+  - type: software
+    title: "CaffarelliKohnNirenberg: a Lean 4 formalization of the Caffarelli-Kohn-Nirenberg partial regularity theorem for the Navier-Stokes equations"
+    authors:
+      - family-names: Armstrong
+        given-names: Scott
+      - family-names: Vicol
+        given-names: Vlad
+    repository-code: "https://github.com/scottnarmstrong/CaffarelliKohnNirenberg"
+  - type: article
+    title: "L_{3,infinity}-solutions of Navier-Stokes equations and backward uniqueness"
+    authors:
+      - family-names: Escauriaza
+        given-names: L.
+      - family-names: Seregin
+        given-names: G. A.
+      - family-names: Sverak
+        given-names: V.
+    journal: "Russian Mathematical Surveys"
+    volume: 58
+    issue: 2
+    start: 211
+    end: 250
+    year: 2003
+    doi: "10.1070/RM2003v058n02ABEH000609"

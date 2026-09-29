@@ -1,0 +1,17 @@
+{
+  "challenge_module": "comparators.Linear.Challenge",
+  "solution_module": "comparators.Linear.Solution",
+  "theorem_names": [
+    "ESSChallenge.uniqueContinuation",
+    "ESSChallenge.backwardUniqueness",
+    "ESSChallenge.carlemanGaussian",
+    "ESSChallenge.carlemanHalfSpace"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

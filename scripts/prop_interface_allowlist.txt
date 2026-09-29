@@ -1,0 +1,8 @@
+# Copyright (c) 2026 Scott Armstrong.
+# Released under Apache 2.0 license.
+# Reviewed tracked Prop interfaces with a source-level instantiating declaration.
+# Format: qualified declaration | definition location | instantiating declaration.
+# Uninstantiated and hypothesis-only definitions are documented in
+# the census written by scripts/prop_interfaces.py and must not be copied into this file.
+ESS.IsGoodPoint | ESS/Endpoint/GoodPointsDefinition.lean | ESS.isGoodPoint_zero
+ESS.IsLpsStrongSolution | ESS/LPS/StrongSolution.lean | ESS.isLpsStrongSolution_zero
