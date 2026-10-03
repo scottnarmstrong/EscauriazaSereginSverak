@@ -1,0 +1,39 @@
+name: Palomar preflight
+
+# Runs Palomar's own submission verifier (the reusable workflow of
+# PalomarRegistry/PalomarSubmission, mode `full`) on a commit of this
+# repository and one of its Comparator configurations, before that pair is
+# submitted to the Palomar registry. A passing run's `mechanical-report`
+# artifact has `"status": "pass"`. The workflow reference and
+# `pipeline_commit` are the same pinned PalomarSubmission commit.
+
+"on":
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: Full 40-character commit of this repository to verify
+        required: true
+        type: string
+      comparator_config_path:
+        description: Comparator configuration to verify (one registry entry each)
+        required: true
+        type: choice
+        options:
+          - comparators/Regularity/comparator.json
+          - comparators/Linear/comparator.json
+
+permissions:
+  contents: read
+
+jobs:
+  palomar:
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@65f0154ed776cd26c224254aa57b379137f28b0d
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ inputs.commit }}
+      pipeline_commit: 65f0154ed776cd26c224254aa57b379137f28b0d
+      # Palomar requires exactly twelve lowercase letters or digits.
+      request_id: esspreflight
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ format('{{"comparator_config_path":"{0}","authorization_relationship":"I am a responsible author or maintainer"}}', inputs.comparator_config_path) }}
