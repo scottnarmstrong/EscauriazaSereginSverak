@@ -1,6 +1,6 @@
 {
-  "challenge_module": "comparators.Linear.Challenge",
-  "solution_module": "comparators.Linear.Solution",
+  "challenge_module": "Linear.Challenge",
+  "solution_module": "Linear.Solution",
   "theorem_names": [
     "ESSChallenge.uniqueContinuation",
     "ESSChallenge.backwardUniqueness",

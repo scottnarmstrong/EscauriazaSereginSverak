@@ -135,9 +135,12 @@ def check_pair(topic: str, config: dict[str, object]) -> int:
             f"{topic}: comparator.json has missing or unauthorized fields")
     challenge_path = Path(f"comparators/{topic}/Challenge.lean")
     solution_path = Path(f"comparators/{topic}/Solution.lean")
-    require(config["challenge_module"] == f"comparators.{topic}.Challenge"
-            and config["solution_module"] == f"comparators.{topic}.Solution",
-            f"{topic}: comparator.json must select comparators.{topic}.Challenge and .Solution")
+    # The Comparators library has srcDir `comparators`, so the modules are
+    # `<Topic>.Challenge` and `<Topic>.Solution`: their first name component is
+    # the topic, which no dependency defines at the root of its sources.
+    require(config["challenge_module"] == f"{topic}.Challenge"
+            and config["solution_module"] == f"{topic}.Solution",
+            f"{topic}: comparator.json must select {topic}.Challenge and {topic}.Solution")
     names = config["theorem_names"]
     require(isinstance(names, list) and names and all(isinstance(n, str) for n in names),
             f"{topic}: theorem_names must be a nonempty string array")
@@ -271,7 +274,7 @@ def check_proofs(topic: str, config: dict[str, object]) -> None:
     solution = Path(f"comparators/{topic}/Solution.lean")
     with tempfile.TemporaryDirectory(prefix="ess-comparator-") as directory:
         staging = Path(directory)
-        (staging / "comparators" / topic).mkdir(parents=True)
+        (staging / topic).mkdir(parents=True)
         result, output = lean(challenge)
         diagnostics = [line for line in output.splitlines() if line.strip()]
         require(result == 0 and len(diagnostics) == len(names) and all(
@@ -279,13 +282,13 @@ def check_proofs(topic: str, config: dict[str, object]) -> None:
             for line in diagnostics
         ), f"{topic}: unexpected Challenge diagnostics (exit {result}): {diagnostics}")
         result, output = lean(solution, "-DwarningAsError=true",
-                             "-o", str(staging / "comparators" / topic / "Solution.olean"))
+                             "-o", str(staging / topic / "Solution.olean"))
         require(result == 0 and not output,
                 f"{topic}: Solution did not elaborate silently (exit {result}): {output}")
 
         probe = staging / "Axioms.lean"
         probe.write_text(
-            f"import comparators.{topic}.Solution\n"
+            f"import {topic}.Solution\n"
             + "".join(f"#print axioms ESSChallenge.{name}\n" for name in names),
             encoding="utf-8",
         )

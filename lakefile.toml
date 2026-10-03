@@ -28,7 +28,11 @@ leanOptions = { autoImplicit = false, warningAsError = true }
 # The Challenge has one intentional sorry per selected theorem;
 # check_comparators.py verifies that these are its only warnings and checks
 # the Solution with warnings as errors.
+# With srcDir = "comparators" the modules are Linear.Challenge, Linear.Solution,
+# Regularity.Challenge and Regularity.Solution: tools that locate a module by
+# its first name component then cannot pick the CKN dependency's comparators/.
 [[lean_lib]]
 name = "Comparators"
-globs = ["comparators.+"]
+srcDir = "comparators"
+globs = ["Linear.+", "Regularity.+"]
 leanOptions = { autoImplicit = false }
